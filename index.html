@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>바게트 합치기</title>
+
+<style>
+:root{font-family:Inter,"Pretendard","Malgun Gothic",sans-serif;color:#292c27;background:#f6f5ef;font-synthesis:none}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button,.upload{cursor:pointer}button:disabled{opacity:.4;cursor:default}button:focus-visible,input:focus-visible,select:focus-visible,.upload:focus-within{outline:3px solid #d78545;outline-offset:4px}header{max-width:1180px;margin:auto;padding:28px 28px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #dedfd5}.brand{font-size:23px;font-weight:850;letter-spacing:-1px}.brand i{color:#79946a;font-style:normal;margin-right:9px}.private{font-size:12px;color:#6e7568}main{max-width:1180px;margin:0 auto;padding:48px 28px 28px}.eyebrow{font-size:11px;font-weight:800;letter-spacing:2px;color:#7b866a}h1{font-size:42px;letter-spacing:-2px;margin:14px 0}h1 em{font-style:normal;color:#718561}.intro{color:#777c70;line-height:1.8;margin-bottom:32px}.workspace{display:grid;grid-template-columns:360px 1fr;gap:24px;align-items:start}.panel{background:#fff;border:1px solid #e1e3d8;border-radius:20px;padding:24px}.step{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:700;margin-bottom:20px}.num{display:inline-grid;place-items:center;width:24px;height:24px;background:#eef1e8;color:#6d805b;border-radius:8px;font-size:12px}.upload{display:block;border:1.5px dashed #cbd1bf;border-radius:14px;padding:25px 14px;text-align:center;background:#fafbf7;position:relative}.upload:hover,.upload.over{background:#eff3e7;border-color:#768b61}.upload input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}.plus{display:block;font-size:28px;color:#8b9b77;margin-bottom:8px}.upload strong{font-size:14px}.upload small{display:block;color:#929789;font-size:11px;margin-top:9px}.files{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.file{position:relative;border:1px solid #e9eadd;border-radius:12px;padding:9px;min-width:0}.thumb{height:70px;background:#fafaf7;display:grid;place-items:center;border-radius:7px;color:#c0c6b5;font-size:22px}.thumb img{display:block;width:100%;height:70px;min-height:0;object-fit:contain}.filename{font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:7px;color:#818675}.replace{position:absolute;inset:0;opacity:0;width:100%;cursor:pointer}.swap{border:0;background:transparent;color:#7c886a;font-size:12px;width:100%;padding:12px;margin-bottom:6px}.divider{border-top:1px solid #eeeee6;margin:12px 0 24px}.setting{display:flex;justify-content:space-between;align-items:center;gap:15px;font-size:13px;margin:18px 0}.setting input[type=checkbox]{accent-color:#6f815d;width:17px;height:17px}.setting input[type=range]{accent-color:#7b8c66;width:130px}select{background:#f8f9f4;border:1px solid #e1e5d8;border-radius:8px;padding:7px;color:#555e49;font-size:12px}.hint{font-size:11px;color:#979c8e;line-height:1.7}.preview-panel{padding:24px;background:#eaece3;border:1px solid #e0e3d7;border-radius:20px}.preview-title{display:flex;justify-content:space-between;font-size:13px;font-weight:700;margin-bottom:18px}.tag{font-size:11px;color:#858d79;font-weight:400}.paper{width:100%;aspect-ratio:1;background:#fff;border-radius:4px;box-shadow:0 8px 24px #323b1610;position:relative;overflow:hidden}.paper canvas{width:100%;height:100%;display:block}.empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;color:#a2a892}.empty.hidden{display:none}.empty-art{display:flex;gap:12px;margin-bottom:25px}.empty-art span{display:grid;place-items:center;border:1px solid #d6ddc8;border-radius:38px 38px 12px 12px;width:70px;height:110px;background:#f2f4ed;font-size:28px;color:#a6b68e}.empty-art span+span{background:#fbf0e5;border-color:#e8d9c9;color:#d1ae87;transform:rotate(5deg)}.empty strong{font-size:14px;color:#8e9880}.empty p{font-size:12px}.preview-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:20px}.download{background:#71835e;color:#fff;border:0;border-radius:11px;padding:14px 25px;font-weight:700;font-size:13px}.download:hover:not(:disabled){background:#5b6e49}.status{font-size:11px;color:#7d866f;line-height:1.7}footer{font-size:11px;color:#949b89;text-align:center;padding:28px}#message{font-size:12px;color:#94623f;line-height:1.6;min-height:18px;margin-top:12px}@media(max-width:760px){header{padding:20px}.private{font-size:10px}main{padding:30px 18px}h1{font-size:33px}.workspace{grid-template-columns:1fr}.panel{padding:20px}.preview-panel{padding:16px}.intro{font-size:13px}.preview-foot{flex-wrap:wrap}.download{flex:1}}
+.actions{display:flex;gap:4px;margin-top:8px}.actions button{flex:1;border:1px solid #e1e5d8;border-radius:5px;background:#f8f9f4;color:#687855;font-size:12px;padding:5px}.file .replace{height:90px}.files{grid-template-columns:repeat(2,minmax(0,1fr))}#swap,#clear{width:50%}.reset{width:100%;border:1px solid #d8decd;background:#f6f8f1;color:#657653;border-radius:9px;padding:11px;font-size:13px;margin-top:12px}.reset:hover{background:#edf1e4}.order-panel{background:#f6f8f1;border:1px solid #dde3d3;border-radius:12px;padding:12px;margin:6px 0 20px}.order-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:13px}.order-panel button{border:1px solid #d4ddc7;background:white;border-radius:6px;padding:6px;color:#62744e;font-size:11px;white-space:nowrap}.order-row{display:flex;gap:6px;align-items:center;padding:7px 0;border-top:1px solid #e3e8dc;font-size:11px}.order-row img{width:25px;height:38px;object-fit:contain}.order-name{flex:1;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.paper.transparent{background-color:#fff;background-image:conic-gradient(#e5e7df 25%,transparent 0 50%,#e5e7df 0 75%,transparent 0);background-size:20px 20px}.brand{display:flex;align-items:center;gap:9px;line-height:1.3}.brand i{display:flex;align-items:center;justify-content:center;margin:0;font-size:27px;line-height:1}</style>
+</head>
+<body>
+<header><div class="brand"><i aria-hidden="true"><svg width="29" height="29" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 26C3 24 4 19 8 14L15 7C20 3 25 3 27 6C30 10 26 15 22 19L15 26C12 29 9 28 7 26Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 7L22 11M12 12L17 16M8 17L13 21" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></i>바게트 합치기</div></header>
+<main>
+<div class="workspace"><section class="panel" aria-label="이미지와 설정">
+<div class="step"><span class="num">1</span>그림 불러오기 <span id="count" class="tag">0장</span></div>
+<label class="upload" id="drop"><span class="plus">＋</span><strong>클릭하거나 그림을 끌어놓으세요</strong><small>PNG / JPG / WEBP · 각 20MB 이하</small><input id="upload" type="file" accept="image/png,image/jpeg,image/webp" multiple aria-label="이미지 추가"></label>
+<div class="files" id="files"></div>
+<button class="swap" id="swap" disabled>⇄ 순서 바꾸기</button><button class="swap" id="clear" disabled>모두 비우기</button>
+<section id="orderPanel" class="order-panel" aria-label="그림 순서 바꾸기" hidden><div class="order-heading"><strong>순서 바꾸기</strong><button id="orderDone" type="button">완료</button></div><div id="orderList"></div></section>
+<div class="divider"></div><div class="step"><span class="num">2</span>상세설정</div>
+<label class="setting" for="whitebg">흰 배경<input id="whitebg" type="checkbox" checked></label>
+<label class="setting" for="transparent">배경 투명화<input id="transparent" type="checkbox"></label>
+<label class="setting" for="distance">중앙선과 거리 <output id="distanceValue">210px</output><input id="distance" type="range" min="0" max="400" value="210"></label>
+<div class="setting"><span>기본 캔버스</span><strong>1000 × 1000 px</strong></div>
+<button class="reset" id="reset" type="button">기본값으로 초기화</button>
+<div id="message" role="status" aria-live="polite"></div></section>
+<section class="preview-panel" aria-label="합친 이미지 미리보기"><div class="preview-title"><span>미리보기</span><span class="tag" id="format">PNG</span></div><div class="paper" id="paper"><canvas id="canvas" width="1000" height="1000" aria-label="합성 결과"></canvas><div class="empty" id="empty"><div class="empty-art"><span>✿</span><span>✿</span></div><strong>함께할 그림들을 기다리고 있어요</strong></div></div><div class="preview-foot"><span class="status" id="status">원본 비율 유지</span><button class="download" id="save" disabled>↓ PNG 저장</button></div></section></div>
+</main>
+<script>
+'use strict';
+const $=id=>document.getElementById(id), items=[];
+let busy=false;
+function bounds(data,w,h){let left=w,top=h,right=-1,bottom=-1;for(let y=0;y<h;y++)for(let x=0;x<w;x++){const i=(y*w+x)*4;if(data[i+3]>12 && Math.min(data[i],data[i+1],data[i+2])<248){left=Math.min(left,x);right=Math.max(right,x);top=Math.min(top,y);bottom=Math.max(bottom,y);}}if(right<0)return {x:0,y:0,w,h};left=Math.max(0,left-2);top=Math.max(0,top-2);right=Math.min(w-1,right+2);bottom=Math.min(h-1,bottom+2);return {x:left,y:top,w:right-left+1,h:bottom-top+1};}
+function layout(rects,n,distance=210){
+ const maxWidth=Math.max(...rects.map(r=>r.w)),maxHeight=Math.max(...rects.map(r=>r.h));
+ // Centers follow the chosen distance exactly; overlap is intentional.
+ let scale=Math.min(1,n/maxHeight);
+ if(rects.length===2)scale=Math.min(scale,(n-2*distance)/maxWidth);
+ const offsets=rects.map((_,i)=>(i-(rects.length-1)/2)*2*distance);
+ const extent=Math.max(...rects.map((r,i)=>Math.abs(offsets[i])+r.w*scale/2));
+ const width=rects.length===2?n:Math.max(n,2*Math.ceil(extent))+140;
+ const positions=rects.map((r,i)=>{const w=r.w*scale,h=r.h*scale;return {x:width/2+offsets[i]-w/2,y:(n-h)/2,w,h};});
+ return {width,height:n,positions,distance};
+}
+async function decode(file){if(!/^image\/(png|jpeg|webp)$/.test(file.type))throw Error('PNG, JPG 또는 WEBP 이미지를 선택해주세요.');if(file.size>20*1024*1024)throw Error('이미지 한 장은 20MB 이하로 선택해주세요.');const url=URL.createObjectURL(file),img=new Image();try{img.src=url;await img.decode();if(img.naturalWidth*img.naturalHeight>40000000)throw Error('4000만 픽셀 이하의 이미지를 사용해주세요.');const c=document.createElement('canvas');c.width=img.naturalWidth;c.height=img.naturalHeight;const ctx=c.getContext('2d',{willReadFrequently:true});ctx.drawImage(img,0,0);const rect=bounds(ctx.getImageData(0,0,c.width,c.height).data,c.width,c.height);return {img,url,name:file.name,rect};}catch(e){URL.revokeObjectURL(url);throw e;}}
+// Remove only near-white/transparent pixels connected to the outer border.
+// Enclosed whites (eyes, clothes, etc.) remain opaque.
+function transparentSource(item){
+ if(item.cutout)return item.cutout;
+ const c=document.createElement('canvas');c.width=item.img.naturalWidth;c.height=item.img.naturalHeight;
+ const ctx=c.getContext('2d',{willReadFrequently:true});ctx.drawImage(item.img,0,0);
+ const pixels=ctx.getImageData(0,0,c.width,c.height);removeOuterWhite(pixels.data,c.width,c.height);ctx.putImageData(pixels,0,0);item.cutout=c;return c;
+}
+function removeOuterWhite(data,w,h){
+ const visited=new Uint8Array(w*h),queue=new Uint32Array(w*h);let head=0,tail=0;
+ function add(p){if(visited[p])return;visited[p]=1;const i=p*4;if(data[i+3]<=12||(data[i]>=248&&data[i+1]>=248&&data[i+2]>=248)){queue[tail++]=p;}}
+ for(let x=0;x<w;x++){add(x);add((h-1)*w+x);}for(let y=0;y<h;y++){add(y*w);add(y*w+w-1);}
+ while(head<tail){const p=queue[head++],x=p%w;data[p*4+3]=0;if(x>0)add(p-1);if(x<w-1)add(p+1);if(p>=w)add(p-w);if(p<(h-1)*w)add(p+w);}
+}
+function sync(){
+ const root=$('files');root.replaceChildren();$('count').textContent=items.length+'장';
+ items.forEach((item,i)=>{const card=document.createElement('div');card.className='file';const thumb=document.createElement('div');thumb.className='thumb';const img=new Image();img.src=item.url;img.alt=item.name;thumb.append(img);const name=document.createElement('div');name.className='filename';name.id='name'+i;name.textContent=(i+1)+'. '+item.name;
+ const replace=document.createElement('input');replace.type='file';replace.className='replace';replace.accept='image/png,image/jpeg,image/webp';replace.setAttribute('aria-label',(i+1)+'번째 그림 변경');replace.disabled=busy;replace.addEventListener('change',()=>load(replace.files,i));
+ const actions=document.createElement('div');actions.className='actions';
+ [['×','삭제',false,()=>{URL.revokeObjectURL(items[i].url);items.splice(i,1);}]].forEach(([label,title,disabled,action])=>{const button=document.createElement('button');button.textContent=label;button.setAttribute('aria-label',(i+1)+'번째 그림 '+title);button.disabled=busy||disabled;button.addEventListener('click',()=>{if(busy)return;action();sync();});actions.append(button);});card.append(thumb,name,replace,actions);root.append(card);});syncOrder();render();
+}
+function syncOrder(){
+ const root=$('orderList');root.replaceChildren();
+ if(items.length<2){$('orderPanel').hidden=true;$('swap').setAttribute('aria-expanded','false');}
+ items.forEach((item,i)=>{
+ const row=document.createElement('div');row.className='order-row';
+ const number=document.createElement('span');number.textContent=i+1;
+ const img=new Image();img.src=item.url;img.alt='';
+ const name=document.createElement('span');name.className='order-name';name.textContent=item.name;name.title=item.name;
+ row.append(number,img,name);
+ [-1,1].forEach(offset=>{const button=document.createElement('button');button.type='button';button.textContent=offset<0?'앞으로':'뒤로';button.setAttribute('aria-label',(i+1)+'번째 그림 '+button.textContent);button.disabled=busy||i+offset<0||i+offset>=items.length;button.addEventListener('click',()=>{if(busy)return;const next=i+offset;[items[i],items[next]]=[items[next],items[i]];sync();const target=$('orderList').children[next].querySelectorAll('button')[offset<0?0:1];if(!target.disabled)target.focus();else $('orderDone').focus();});row.append(button);});root.append(row);
+ });
+}
+function render(){
+ const n=1000,canvas=$('canvas'),ready=items.length>=2;
+ const rects=items.map(item=>item.rect);
+ const plan=ready?layout(rects,n,Number($('distance').value)):{width:n,height:n,positions:[]};
+ canvas.width=plan.width;canvas.height=plan.height;$('paper').style.aspectRatio=plan.width+' / '+plan.height;const ctx=canvas.getContext('2d');const transparent=$('transparent').checked;$('paper').classList.toggle('transparent',transparent);if(!transparent){ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);}
+ $('empty').classList.toggle('hidden',ready);$('save').disabled=!ready||busy;$('swap').disabled=!ready||busy;$('clear').disabled=!items.length||busy;$('upload').disabled=busy;
+ $('distanceValue').value=Math.round(plan.distance??Number($('distance').value))+'px';$('format').textContent=ready?(items.length===2?'정사각형':'가로형')+' · '+items.length+'장 · PNG':'PNG';
+ $('status').textContent=ready?canvas.width+' × '+canvas.height+' px · '+(transparent?'투명 배경':'흰색 배경')+' · PNG':'그림을 2장 이상 추가해주세요.';
+ if(!ready)return;ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';items.forEach((item,i)=>{const s=rects[i],d=plan.positions[i];ctx.drawImage(transparentSource(item),s.x,s.y,s.w,s.h,d.x,d.y,d.w,d.h);});
+}
+async function load(files,index){
+ if(busy)return;const list=Array.from(files);if(!list.length)return;
+ if(index!==undefined&&list.length!==1){$('message').textContent='교체할 그림 한 장을 선택해주세요.';return;}
+ busy=true;sync();$('message').textContent='그림을 불러오는 중이에요…';const decoded=[];
+ try{for(const file of list)decoded.push(await decode(file));if(index!==undefined){URL.revokeObjectURL(items[index].url);items[index]=decoded[0];}else items.push(...decoded);$('message').textContent=items.length>=2?'준비됐어요! 그림을 더 추가하거나 PNG로 저장해보세요.':'그림을 한 장 더 추가해주세요.';}
+ catch(e){decoded.forEach(item=>URL.revokeObjectURL(item.url));$('message').textContent=e.message.includes('이미지')||e.message.includes('픽셀')?e.message:'이미지를 읽을 수 없어요. 다른 파일을 선택해주세요.';}
+ finally{busy=false;sync();}
+}
+$('upload').addEventListener('change',e=>{load(e.target.files);e.target.value='';});
+const drop=$('drop');['dragenter','dragover'].forEach(type=>drop.addEventListener(type,e=>{e.preventDefault();drop.classList.add('over');}));['dragleave','drop'].forEach(type=>drop.addEventListener(type,e=>{e.preventDefault();drop.classList.remove('over');}));drop.addEventListener('drop',e=>load(e.dataTransfer.files));window.addEventListener('dragover',e=>e.preventDefault());window.addEventListener('drop',e=>e.preventDefault());
+$('swap').setAttribute('aria-controls','orderPanel');$('swap').setAttribute('aria-expanded','false');
+$('swap').addEventListener('click',()=>{$('orderPanel').hidden=!$('orderPanel').hidden;$('swap').setAttribute('aria-expanded',String(!$('orderPanel').hidden));if(!$('orderPanel').hidden)$('orderDone').focus();});
+$('orderDone').addEventListener('click',()=>{$('orderPanel').hidden=true;$('swap').setAttribute('aria-expanded','false');$('swap').focus();});['distance'].forEach(id=>$(id).addEventListener('input',render));
+['whitebg','transparent'].forEach(id=>$(id).addEventListener('change',()=>{const other=id==='whitebg'?'transparent':'whitebg';$(other).checked=!$(id).checked;render();}));
+$('reset').addEventListener('click',()=>{$('whitebg').checked=true;$('transparent').checked=false;$('distance').value='210';render();});
+$('clear').addEventListener('click',()=>{items.forEach(item=>URL.revokeObjectURL(item.url));items.length=0;$('message').textContent='';sync();});
+function downloadFilename(now=new Date()){const pad=n=>String(n).padStart(2,'0');return '바게트합본_'+now.getFullYear()+pad(now.getMonth()+1)+pad(now.getDate())+'_'+pad(now.getHours())+pad(now.getMinutes())+pad(now.getSeconds())+'.png';}
+$('save').addEventListener('click',()=>{$('canvas').toBlob(blob=>{if(!blob){$('message').textContent='저장하지 못했어요. 그림 수를 줄여 다시 시도해주세요.';return;}const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=downloadFilename();a.click();setTimeout(()=>URL.revokeObjectURL(url),30000);},'image/png');});render();
+</script></body></html>
